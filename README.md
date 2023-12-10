@@ -2,3 +2,14 @@
 
 # Inferno-Discord-Bot
 A powerful Discord nuke bot written on Go
+<hr>
+
+#.env file
+there's many variables such as {
+    BOT_TOKEN: bot's token
+    AVATAR_URL: avatar url for webhook
+    WEBHOOK_ID: Webhook's ID
+    WEBHOOK_TOKEN: Webhook's Token
+    WEBHOOK_URL: Webhook's url
+
+}
