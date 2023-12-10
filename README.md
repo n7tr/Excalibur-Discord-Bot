@@ -4,8 +4,11 @@
 A powerful Discord nuke bot written on Go
 <hr>
 
-#.env file
-there's many variables such as {
+# .env file
+There's many variables such as 
+
+<pre>
+{
     BOT_TOKEN: bot's token
     AVATAR_URL: avatar url for webhook
     WEBHOOK_ID: Webhook's ID
@@ -13,3 +16,4 @@ there's many variables such as {
     WEBHOOK_URL: Webhook's url
 
 }
+</pre>
