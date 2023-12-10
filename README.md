@@ -10,10 +10,18 @@ There's many variables such as
 <pre>
 {
     BOT_TOKEN: bot's token
-    AVATAR_URL: avatar url for webhook
+    
     WEBHOOK_ID: Webhook's ID
     WEBHOOK_TOKEN: Webhook's Token
-    WEBHOOK_URL: Webhook's url
+    AVATAR_URL: avatar url for webhook
+
+    CHANNEL_NAME: name of the channel
+    SERVER_NAME: name of the server
+    ROLE_NAME: name of the role
+
+    EMBED_TITLE: Embed's title
+    EMBED_DESCRIPTION: Embed's description
 
 }
 </pre>
+<p>/// All values are have string type</p>
