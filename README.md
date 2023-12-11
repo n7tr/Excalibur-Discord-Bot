@@ -95,8 +95,8 @@ func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
     }
 </pre>
 <hr>
-# cogs folder
-There's located all bot's functions.
+<h1>cogs folder</h1>
+<p>There's located all bot's functions.</p>
 <pre>
     channels.go: 2 functions (DeleteChannels, TextSpam)
     emoji.go: 1 function that deletes all emojis from the server
