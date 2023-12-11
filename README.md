@@ -24,4 +24,21 @@ There's many variables such as
 
 }
 </pre>
-<p>/// All values are have string type</p>
+<p>/// All values are have string data type</p>
+
+# Code Structure
+All bot's functions are in cogs folder
+<pre>
+    main.go
+    auto.go
+    .env
+    avatar.webp
+    - cogs
+      - channels.go
+      - emoji.go
+      - leave.go
+      - members.go
+      - rename.go
+      - roles.go
+      - webhooks.go
+</pre>
