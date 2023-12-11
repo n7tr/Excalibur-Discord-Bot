@@ -44,12 +44,12 @@ All bot's functions are in cogs folder
 </pre>
 
 # main.go & auto.go
-<h1>main.go - launches bot and OnGuildCreate handler from auto.go</h1>
+<h3>main.go - launches bot and OnGuildCreate handler from auto.go</h3>
 <pre>
     sess.AddHandler(onGuildCreate) - function onGuildCreate is located in auto.go file
 </pre>
 <hr>
-<h1>auto.go - launches bot's functions from cogs folder if bot joined the guilld </h1>
+<h3>auto.go - launches bot's functions from cogs folder if bot joined the guilld </h3>
 <pre>
 func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
   var wg sync.WaitGroup
