@@ -107,3 +107,12 @@ func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
     webhooks.go: 1 function that send logs before nuke bot starts other functions via webhook.
 </pre>
 
+# Installation guide
+
+First of all you need to install golang (version: 1.20 or latest), then install packages godotenv and discordgo (versions in go.sum)
+
+<pre>
+DONT FORGET TO CHANGE TOKEN AND WEBHOOK'S DATA IN .env FILE
+</pre>
+
+After that you can build your project or run main.go file.
