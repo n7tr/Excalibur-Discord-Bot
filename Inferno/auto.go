@@ -1,7 +1,7 @@
 package main
 
 import (
-	"src/cogs"
+	"Inferno/cogs"
 	"github.com/bwmarrin/discordgo"
 	"sync"
 )

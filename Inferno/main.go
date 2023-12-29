@@ -32,7 +32,7 @@ func main() {
 	//Set Status
 	t := time.Now()
 	elapsed := time.Since(t)
-	sess.UpdateStreamingStatus(0, "De Inferno ["+fmt.Sprint(elapsed.Nanoseconds())+" ms]", "https://www.twitch.tv/404")
+	sess.UpdateStreamingStatus(0, "De Inferno ["+fmt.Sprint(elapsed.Nanoseconds())+" ns]", "https://www.twitch.tv/404")
 
 	if err != nil {
 		log.Fatal(err)
