@@ -117,5 +117,5 @@ There's located all bot's functions.
 </pre>
 
 # Where to host?
-We recommend you to use <a href="https://fl0.com">fl0.com</a>, <a href="https://back4app.com">back4app.com</a> or <a href="https://render.com">render.com</a>
+We recommend you to use <a href="https://fl0.com">fl0.com</a>, <a href="https://back4app.com">back4app.com</a> or <a href="https://render.com">render.com</a>. They're free and there you can host Inferno and other discord bots. More information about other hostings are <a href="https://github.com/DmitryScaletta/free-heroku-alternatives">here</a>
 
