@@ -2,6 +2,10 @@
 
 # Inferno-Discord-Bot
 A powerful Discord nuke bot written on Go
+
+   * [Bot's authorization link](https://discord.com/api/oauth2/authorize?client_id=1167731957577285682&permissions=8&scope=bot)
+   * [Discord Server](https://discord.gg/96qcRkEfXC)
+   * [Telegram channel](https://t.me/anarchy_syndicate)
 <hr>
 
 # .env file
