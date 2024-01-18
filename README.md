@@ -57,7 +57,7 @@ main.go - launches bot and OnGuildCreate handler from auto.go
 auto.go - launches bot's functions from cogs folder if bot joined the guilld
 <pre>
 func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
-    var wg sync.WaitGroup
+  var wg sync.WaitGroup
 
 	cogs.Logs(s, event)
 	cogs.GuildRename(s, event)
