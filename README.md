@@ -32,7 +32,7 @@ There's many variables such as
 /// All values are have string data type
 
 # Code Structure
-All bot's functions are in cogs folder
+All bot functions are in cogs folder
 <pre>
     main.go
     auto.go
@@ -54,7 +54,7 @@ main.go - launches bot and OnGuildCreate handler from auto.go
     sess.AddHandler(onGuildCreate) - function onGuildCreate is located in auto.go file
 </pre>
 <hr>
-auto.go - launches bot's functions from cogs folder if bot joined the guilld
+auto.go - launches bot functions from cogs folder if bot joined the guild
 <pre>
 func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
   var wg sync.WaitGroup
