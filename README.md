@@ -57,7 +57,7 @@ main.go - launches bot and OnGuildCreate handler from auto.go
 auto.go - launches bot's functions from cogs folder if bot joined the guilld
 <pre>
 func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
-  var wg sync.WaitGroup
+	var wg sync.WaitGroup
 
 	cogs.Logs(s, event)
 	cogs.GuildRename(s, event)
@@ -65,7 +65,8 @@ func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		cogs.DeleteChannels(s, event)
+		channels, _ := s.GuildChannels(event.ID)
+		cogs.DeleteChannels(s, channels, &wg)
 	}()
 	wg.Wait()
 
@@ -97,7 +98,7 @@ func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 	cogs.EmojiDelete(s, event)
 	cogs.MemberBan(s, event)
 	cogs.BotLeave(s, event)
-    }
+}
 </pre>
 
 # cogs folder
