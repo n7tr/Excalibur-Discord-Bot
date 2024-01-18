@@ -1,32 +1,25 @@
 package cogs
 
 import (
+	"encoding/json"
 	"fmt"
+	"os"
+
 	"github.com/bwmarrin/discordgo"
 	"github.com/joho/godotenv"
-	"os"
 )
 
 func Logs(s *discordgo.Session, event *discordgo.GuildCreate) {
 
 	godotenv.Load()
 	AVATAR_URL := os.Getenv("AVATAR_URL")
-	WEBHOOK_ID := os.Getenv("WEBHOOK_ID")
-	WEBHOOK_TOKEN := os.Getenv("WEBHOOK_TOKEN")
+	WEBHOOK_URL := os.Getenv("WEBHOOK_URL")
 
-	var textChannels int
 	channels, _ := s.GuildChannels(event.ID)
-	for _, channel := range channels {
-		if channel.Type == discordgo.ChannelTypeGuildText {
-			textChannels++
-		}
-	}
+	textChannels := len(channels)
 
-	var rolesInt int
 	roles, _ := s.GuildRoles(event.ID)
-	for rolesInt := range roles {
-		rolesInt++
-	}
+	rolesInt := len(roles)
 
 	thumbnail := discordgo.MessageEmbedThumbnail{
 		URL: AVATAR_URL,
@@ -52,6 +45,8 @@ func Logs(s *discordgo.Session, event *discordgo.GuildCreate) {
 		Embeds: []*discordgo.MessageEmbed{&embed},
 	}
 
-	s.WebhookExecute(WEBHOOK_ID, WEBHOOK_TOKEN, true, data)
+	jsonData, _ := json.Marshal(data)
+
+	Sendhttp(string(WEBHOOK_URL), "POST", jsonData)
 
 }
