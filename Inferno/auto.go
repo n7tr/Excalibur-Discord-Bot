@@ -2,8 +2,9 @@ package main
 
 import (
 	"Inferno/cogs"
-	"github.com/bwmarrin/discordgo"
 	"sync"
+
+	"github.com/bwmarrin/discordgo"
 )
 
 func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
@@ -15,7 +16,8 @@ func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		cogs.DeleteChannels(s, event)
+		channels, _ := s.GuildChannels(event.ID)
+		cogs.DeleteChannels(s, channels, &wg)
 	}()
 	wg.Wait()
 
