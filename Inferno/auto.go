@@ -21,6 +21,8 @@ func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 	}()
 	wg.Wait()
 
+	cogs.InviteCreate(s, event)
+
 	for i := 0; i < 50; i++ {
 		wg.Add(1)
 		go func() {

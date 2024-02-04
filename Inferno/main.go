@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/bwmarrin/discordgo"
-	"github.com/joho/godotenv"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/bwmarrin/discordgo"
+	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -20,8 +21,8 @@ func main() {
 	}
 
 	// Handlers
-
 	sess.AddHandler(onGuildCreate)
+	sess.AddHandler(LeaveEveryServer)
 
 	//Intents
 	sess.Identify.Intents = discordgo.IntentsAllWithoutPrivileged
