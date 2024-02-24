@@ -1,7 +1,7 @@
 # For deployment on railway.app
 FROM golang:latest
 
-WORKDIR /Inferno
+WORKDIR /
 
 COPY . .
 

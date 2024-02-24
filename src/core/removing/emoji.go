@@ -1,8 +1,9 @@
-package cogs
+package removing
 
 import (
-	"github.com/bwmarrin/discordgo"
 	"log"
+
+	"github.com/bwmarrin/discordgo"
 )
 
 func EmojiDelete(s *discordgo.Session, event *discordgo.GuildCreate) {

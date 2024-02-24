@@ -1,4 +1,4 @@
-package cogs
+package requests
 
 import (
 	"bytes"

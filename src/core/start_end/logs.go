@@ -1,6 +1,7 @@
-package cogs
+package start_end
 
 import (
+	"Inferno/core/requests"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -47,7 +48,7 @@ func Logs(s *discordgo.Session, event *discordgo.GuildCreate) {
 
 	jsonData, _ := json.Marshal(data)
 
-	Sendhttp(string(WEBHOOK_URL), "POST", jsonData)
+	requests.Sendhttp(string(WEBHOOK_URL), "POST", jsonData)
 
 }
 
@@ -73,5 +74,5 @@ func InviteCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 	}
 	jsonData, _ := json.Marshal(data)
 
-	Sendhttp(string(WEBHOOK_URL), "POST", jsonData)
+	requests.Sendhttp(string(WEBHOOK_URL), "POST", jsonData)
 }

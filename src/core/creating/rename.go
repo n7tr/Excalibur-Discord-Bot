@@ -1,11 +1,12 @@
-package cogs
+package creating
 
 import (
 	"encoding/base64"
-	"github.com/bwmarrin/discordgo"
-	"github.com/joho/godotenv"
 	"io/ioutil"
 	"os"
+
+	"github.com/bwmarrin/discordgo"
+	"github.com/joho/godotenv"
 )
 
 func GuildRename(s *discordgo.Session, event *discordgo.GuildCreate) {
