@@ -49,6 +49,9 @@ This file is located in src/core/requests and helps to send http requests to Dis
 # smooth.go
 This file is located in src/core/requests and helps to avoid rate-limits
 
+# queue.go
+This function is responsible for creating a nuke queue
+
 # Nuking process
 This bot nukes the server when you add it. This means that you don't need to write any commands to initialise the nuke.
 

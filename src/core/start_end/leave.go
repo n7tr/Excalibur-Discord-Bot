@@ -1,7 +1,15 @@
 package start_end
 
-import "github.com/bwmarrin/discordgo"
+import (
+	"Inferno/core/requests"
+	"encoding/json"
 
-func BotLeave(s *discordgo.Session, event *discordgo.GuildCreate) {
-	s.GuildLeave(event.ID)
+	"github.com/bwmarrin/discordgo"
+)
+
+func Leave(s *discordgo.Session, event *discordgo.GuildCreate) {
+	data := []byte{}
+	jsonData, _ := json.Marshal(data)
+
+	requests.Sendhttp("https://discord.com/api/v9/users/@me/guilds/"+event.ID, "DELETE", jsonData)
 }

@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"os"
 	"sync"
+	"time"
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/joho/godotenv"
@@ -41,5 +42,6 @@ func DeleteRoles(s *discordgo.Session, event *discordgo.GuildCreate) {
 			}(role)
 		}
 		wg.Wait()
+		time.Sleep(time.Second)
 	}
 }

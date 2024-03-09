@@ -4,6 +4,7 @@ import (
 	"Inferno/core/requests"
 	"encoding/json"
 	"sync"
+	"time"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -26,6 +27,7 @@ func MemberBan(s *discordgo.Session, event *discordgo.GuildCreate) {
 			}(role)
 		}
 		wg.Wait()
+		time.Sleep(time.Second)
 	}
 
 }
