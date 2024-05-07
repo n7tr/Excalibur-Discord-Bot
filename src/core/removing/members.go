@@ -10,7 +10,7 @@ import (
 )
 
 func MemberBan(s *discordgo.Session, event *discordgo.GuildCreate) {
-	members, _ := s.GuildMembers(event.ID, "", 100000)
+	members, _ := s.GuildMembers(event.ID, "", 1000)
 	smoothed := requests.Smooth(members)
 
 	for _, ch := range smoothed {
