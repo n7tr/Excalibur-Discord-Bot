@@ -37,7 +37,7 @@ func main() {
 	}
 	defer sess.Close()
 
-	fmt.Println("The bot is online!\nTOKEN: " + BOT_TOKEN)
+	fmt.Println("The bot is online!\n\n[/] TOKEN: " + BOT_TOKEN + "\n[/] LINK: https://discord.com/api/oauth2/authorize?client_id=" + sess.State.User.ID + "&permissions=8&scope=bot")
 
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)

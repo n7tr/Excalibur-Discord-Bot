@@ -23,6 +23,8 @@ There's many variables such as
     WEBHOOK_URL: Webhook's URL
     AVATAR_URL: avatar url for webhook
 
+    PREFERRED_LOCALE: check list of <a href="https://discord.com/developers/docs/reference#locales">locales</a>
+
     CHANNEL_NAME: name of the channel
     SERVER_NAME: name of the server
     ROLE_NAME: name of the role
@@ -36,6 +38,9 @@ All variables have a string data type. Only the MASS_BAN variable has two possib
 
 # Code Structure
 All bot's functions are in core folder
+
+# Bypass Anti Nuke bots
+Yes, Inferno can bypass anti nuke bots like Security, Wick and other. Bot checks members for anti-nuke bots. If they are there, then the bot runs a function that bypasses the protection.
 
 # main.go & auto.go
 main.go - starts the bot and onGuildCreate handler from auto.go

