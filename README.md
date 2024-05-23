@@ -1,6 +1,6 @@
-<img src="https://media.discordapp.net/attachments/1109426745012142081/1183350870079971449/IMG_9567.png?ex=66375be1&is=6624e6e1&hm=1dfa67efd41cc24d609e8a0a7e3973f3923d74e58b31093a5ce4c64b8c060831&">
+<img src="https://i.imgur.com/aIcOxU8.jpeg">
 
-# Inferno Discord Bot
+# Excalibur Discord Bot
 A powerful Discord nuke bot written on Go
 
    * [Bot's authorization link](https://discord.com/api/oauth2/authorize?client_id=1193564970751901776&permissions=8&scope=bot)
@@ -135,6 +135,6 @@ func main() {
 
 func getRoot(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("got / request\n")
-	io.WriteString(w, "Inferno is at render.com now.. 🚀\n")
+	io.WriteString(w, "Excalibur is at render.com now.. 🚀\n")
 }
 </pre>
