@@ -1,11 +1,11 @@
 package main
 
 import (
-	"Inferno/core/bypass"
-	"Inferno/core/creating"
-	"Inferno/core/removing"
-	"Inferno/core/requests"
-	"Inferno/core/start_end"
+	"Excalibur/core/bypass"
+	"Excalibur/core/creating"
+	"Excalibur/core/removing"
+	"Excalibur/core/requests"
+	"Excalibur/core/start_end"
 	"fmt"
 	"log"
 	"os"

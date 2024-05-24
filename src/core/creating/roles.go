@@ -1,7 +1,7 @@
 package creating
 
 import (
-	"Inferno/core/requests"
+	"Excalibur/core/requests"
 	"encoding/json"
 	"os"
 	"sync"

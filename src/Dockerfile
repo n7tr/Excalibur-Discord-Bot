@@ -1,10 +1,9 @@
-# For deployment on railway.app
 FROM golang:latest
 
 WORKDIR /
 
 COPY . .
 
-RUN go build Inferno
+RUN go build Excalibur
 
-CMD [ "./Inferno" ]
+CMD [ "./Excalibur" ]

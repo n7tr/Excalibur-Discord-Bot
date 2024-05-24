@@ -1,7 +1,7 @@
 package start_end
 
 import (
-	"Inferno/core/requests"
+	"Excalibur/core/requests"
 	"encoding/json"
 
 	"github.com/bwmarrin/discordgo"

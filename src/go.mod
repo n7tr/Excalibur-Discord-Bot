@@ -1,4 +1,4 @@
-module Inferno
+module Excalibur
 
 go 1.20
 

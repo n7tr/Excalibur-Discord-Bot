@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Inferno/core/requests"
+	"Excalibur/core/requests"
 	"os"
 	"sync"
 

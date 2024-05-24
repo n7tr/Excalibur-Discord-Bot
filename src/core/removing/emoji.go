@@ -1,7 +1,7 @@
 package removing
 
 import (
-	"Inferno/core/requests"
+	"Excalibur/core/requests"
 	"encoding/json"
 	"sync"
 	"time"
