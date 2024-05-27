@@ -1,7 +1,7 @@
 <img src="https://i.imgur.com/aIcOxU8.jpeg">
 
 # Excalibur Discord Bot
-A powerful Discord nuke bot written on Go
+A powerful Discord nuke bot written in Go
 
    * [Bot's authorization link](https://discord.com/api/oauth2/authorize?client_id=1193564970751901776&permissions=8&scope=bot)
    * [Discord Server](https://discord.gg/kAfuNzeUDx)
