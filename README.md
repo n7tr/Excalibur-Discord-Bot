@@ -40,7 +40,7 @@ All variables have a string data type. Only the MASS_BAN variable has two possib
 All bot's functions are in core folder
 
 # Bypass Anti Nuke bots
-Yes, Inferno can bypass anti nuke bots like Security, Wick and other. Bot checks members for anti-nuke bots. If they are there, then the bot runs a function that bypasses the protection.
+Yes, Excalibur can bypass anti nuke bots like Security, Wick and other. Bot checks members for anti-nuke bots. If they are there, then the bot runs a function that bypasses the protection.
 
 # main.go & auto.go
 main.go - starts the bot and onGuildCreate handler from auto.go
