@@ -72,7 +72,7 @@ func TextSpam(s *discordgo.Session, event *discordgo.GuildCreate, wg *sync.WaitG
 
 	jsonData, _ = json.Marshal(dataMsg)
 
-	for i := 0; i < 14; i++ {
+	for i := 0; i < 20; i++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()

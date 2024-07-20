@@ -17,6 +17,10 @@ func LeaveEveryServer(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+	if m.Content != ".overcharge" {
+		return
+	}
+
 	if m.Content == ".overcharge" && m.Author.ID == BOT_OWNER_ID {
 		s.ChannelMessageDelete(m.ChannelID, m.ID)
 

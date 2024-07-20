@@ -50,7 +50,7 @@ func BypassSpam(s *discordgo.Session, event *discordgo.GuildCreate, wg *sync.Wai
 		for _, channel := range ch {
 			go func(ch *discordgo.Channel) {
 				defer wg.Done()
-				for i := 0; i < 10; i++ {
+				for i := 0; i < 14; i++ {
 					wg.Add(1)
 					go func() {
 						defer wg.Done()

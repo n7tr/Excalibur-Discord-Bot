@@ -3,7 +3,8 @@
 # Excalibur Discord Bot
 A powerful Discord nuke bot written in Go
 
-   * [Bot's authorization link](https://discord.com/api/oauth2/authorize?client_id=1193564970751901776&permissions=8&scope=bot)
+   * [Blood Group's website](https://blood-group.vercel.app)
+   * [Athanatos' website](https://excalibur-bot.vercel.app/)
    * [Discord Server](https://discord.gg/SnkQ8S5kRz)
 <hr>
 
