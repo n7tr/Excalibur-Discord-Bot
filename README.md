@@ -4,7 +4,7 @@
 A powerful Discord nuke bot written in Go
 
    * [Blood Group's website](https://blood-group.vercel.app)
-   * [Athanatos' website](https://excalibur-bot.vercel.app/)
+   * [Excalibur's website](https://excalibur-bot.vercel.app/)
    * [Discord Server](https://discord.gg/SnkQ8S5kRz)
 <hr>
 
@@ -67,7 +67,7 @@ This bot nukes the server when you add it. This means that you don't need to wri
 	2. Install golang
 	3. Go to src folder
 	4. Change values in .env
-	5. Run go build Inferno and then ./Inferno or double-click the executable named Inferno
+	5. Run go build Excalibur and then ./Excalibur or double-click the executable named Excalibur
 </pre>
 
 # Where to host?
@@ -85,9 +85,9 @@ WORKDIR /
 
 COPY . .
 
-RUN go build Inferno
+RUN go build Excalibur
 
-CMD [ "./Inferno" ]
+CMD [ "./Excalibur" ]
 </pre>
 
 <pre>
@@ -98,11 +98,11 @@ WORKDIR /
 
 COPY . .
 
-RUN go build Inferno
+RUN go build Excalibur
 
 EXPOSE 8080
 
-CMD [ "./Inferno" ]
+CMD [ "./Excalibur" ]
 </pre>
 
 If you want to deploy your fork on render.com, add code snippet bellow to main.go
